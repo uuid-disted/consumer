@@ -1,0 +1,18 @@
+services:
+  vscode:
+    container_name: uuid-disted_consumer_vscode
+    build:
+      context: .
+    volumes:
+      - ..:/workspaces/consumer:cached
+    networks:
+      - uuid-disted_consumer_network
+    env_file:
+      - .env
+
+volumes:
+  consumer_dev_database_volume:
+
+networks:
+  uuid-disted_consumer_network:
+    driver: bridge
