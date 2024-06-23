@@ -29,7 +29,10 @@ func UUIDHandler(app *Application) http.HandlerFunc {
 		nStr := r.URL.Query().Get("n")
 		n, err := strconv.Atoi(nStr)
 		if err != nil || n <= 0 {
-			n = 1 // default value
+			n = 1
+		}
+		if n > 1000 {
+			n = 1000
 		}
 
 		uuids := app.GetUUIDs(n)
@@ -80,6 +83,9 @@ func handleMessages(conn *websocket.Conn, app *Application) {
 		n := msg.N
 		if n <= 0 {
 			n = 1
+		}
+		if n > 1000 {
+			n = 1000
 		}
 
 		uuids := app.GetUUIDs(n)

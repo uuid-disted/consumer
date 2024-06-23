@@ -22,7 +22,7 @@ func main() {
 	app := app.NewApplication(brokerHosts)
 	go app.Run("uuids")
 
-	app.StartServer(8080)
+	app.StartServer(443)
 }
 
 func readBrokersFile(filename string) ([]string, error) {
